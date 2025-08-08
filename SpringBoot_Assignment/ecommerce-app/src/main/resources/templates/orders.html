@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Orders</title>
+</head>
+<body>
+<h1>Orders</h1>
+<a href="/add-order">Create Order</a>
+<table border="1" cellpadding="5" cellspacing="0">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Customer ID</th>
+        <th>Product IDs</th>
+        <th>Order Date</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="order : ${orderList}">
+        <td th:text="${order.id}"></td>
+        <td th:text="${order.customerId}"></td>
+        <td th:text="${order.productIds}"></td>
+        <td th:text="${#dates.format(order.orderDate, 'yyyy-MM-dd HH:mm')}"></td>
+        <td>
+            <a th:href="@{/edit-order/{id}(id=${order.id})}">Edit</a> |
+            <a th:href="@{/delete-order/{id}(id=${order.id})}">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a href="/home">Back to Home</a>
+</body>
+</html>

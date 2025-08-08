@@ -1,0 +1,6 @@
+package com.example.theater_service.repository;
+
+@Repository
+public interface TheaterRepository  extends JpaRepository<Theater, Long>{
+
+}

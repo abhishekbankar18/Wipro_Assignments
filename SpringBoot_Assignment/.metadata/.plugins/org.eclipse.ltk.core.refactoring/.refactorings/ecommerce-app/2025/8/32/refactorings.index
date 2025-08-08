@@ -1,0 +1,18 @@
+1754214517940	Delete element
+1754214568526	Rename package 'ecommerce_app'
+1754214596491	Rename package 'ecommerce_app.controller'
+1754214618844	Rename package 'ecommerce_app.model'
+1754214641429	Rename package 'ecommerce_app.repository'
+1754214656749	Rename package 'ecommerce_app.service'
+1754219599225	Delete element
+1754219614580	Delete element
+1754219913486	Rename type 'CustomerService'
+1754220313528	Copy file
+1754220317488	Delete element
+1754222014034	Rename resource 'customers.html'
+1754247563153	Rename resource 'orders.html'
+1754247646502	Rename resource 'orders-form.html'
+1754334367856	Delete element
+1754336133810	Rename resource 'create-product.html'
+1754336161799	Rename resource 'create-order.html'
+1754336200817	Rename resource 'create-payment.html'

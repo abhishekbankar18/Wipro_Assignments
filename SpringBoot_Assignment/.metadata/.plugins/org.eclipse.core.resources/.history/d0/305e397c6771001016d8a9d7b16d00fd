@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home - Customer List</title>
+</head>
+<body>
+    <h1>Customer List</h1>
+
+    <table border="1" cellpadding="5" cellspacing="0">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="customer : ${customerList}">
+                <td th:text="${customer.id}">1</td>
+                <td th:text="${customer.name}">John Doe</td>
+                <td th:text="${customer.email}">john@example.com</td>
+                <td th:text="${customer.password}">secret</td>
+                <td>
+                    <a th:href="@{'/edit/' + ${customer.id}}">Edit</a>
+                    |
+                    <a th:href="@{'/delete/' + ${customer.id}}" 
+                       onclick="return confirm('Are you sure you want to delete this customer?');">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p><a href="/add-customer">Add New Customer</a></p>
+</body>
+</html>

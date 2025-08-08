@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>E-Commerce App Home</title>
+</head>
+<body>
+    <h1>Welcome to E-Commerce App</h1>
+    
+    <h2>Manage Customers</h2>
+    <ul>
+        <li><a href="/home">View Customers</a></li>
+        <li><a href="/add-customer">Add Customer</a></li>
+    </ul>
+    
+    <h2>Manage Orders</h2>
+    <ul>
+        <li><a href="/create-order.html">Create Order</a></li>
+        <!-- Add more order management pages here as needed -->
+    </ul>
+    
+    <h2>Manage Payments</h2>
+    <ul>
+        <li><a href="/create-payment.html">Create Payment</a></li>
+        <!-- Add more payment pages if available -->
+    </ul>
+    
+    <h2>Manage Products</h2>
+    <ul>
+        <li><a href="/create-product.html">Add Product</a></li>
+        <!-- Add more product pages if needed -->
+    </ul>
+    
+</body>
+</html>

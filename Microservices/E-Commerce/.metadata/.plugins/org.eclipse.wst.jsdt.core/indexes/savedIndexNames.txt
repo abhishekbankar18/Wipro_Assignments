@@ -1,0 +1,8 @@
+INDEX VERSION 1.4+C:\Users\Abhishek\Desktop\Wipro_Training\Day16-Microservices\MyProject\E-Commerce\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+2763547083.index
+1698827149.index
+772805776.index
+3916334769.index
+15502769.index
+3450140220.index
+2317501585.index

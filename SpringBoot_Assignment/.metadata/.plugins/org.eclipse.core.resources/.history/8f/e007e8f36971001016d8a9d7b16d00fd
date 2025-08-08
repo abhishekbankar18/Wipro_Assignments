@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>E-Commerce App - Home</title>
+</head>
+<body>
+    <h1>Home</h1>
+
+    <!-- Customers Section -->
+    <h2>Customers</h2>
+    <table border="1" cellpadding="5" cellspacing="0">
+        <thead>
+            <tr>
+                <th>ID</th><th>Name</th><th>Email</th><th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="customer : ${customerList}">
+                <td th:text="${customer.id}">1</td>
+                <td th:text="${customer.name}">John</td>
+                <td th:text="${customer.email}">john@example.com</td>
+                <td>
+                    <a th:href="@{'/edit/' + ${customer.id}}">Edit</a> |
+                    <a th:href="@{'/delete/' + ${customer.id}}"
+                       onclick="return confirm('Delete this customer?');">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p><a href="/add-customer">Add New Customer</a></p>
+
+    <!-- Orders Section -->
+    <h2>Orders</h2>
+    <table border="1" cellpadding="5" cellspacing="0">
+        <thead>
+            <tr>
+                <th>ID</th><th>Customer ID</th><th>Product IDs</th><th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="order : ${orderList}">
+                <td th:text="${order.id}">1</td>
+                <td th:text="${order.customer.id}">10</td>
+                <td>
+                    <span th:each="prod : ${order.products}" th:text="${prod.id + ' '}">100 </span>
+                </td>
+                <td>
+                <a href="/create-order.html">Create Order</a>
+                    <a th:href="@{'/orders/edit/' + ${order.id}}">Edit</a> |
+                    <a th:href="@{'/orders/delete/' + ${order.id}}"
+                       onclick="return confirm('Delete this order?');">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p><a href="/orders/new">Add New Order</a></p>
+
+    <!-- Payments Section -->
+    <h2>Payments</h2>
+    <table border="1" cellpadding="5" cellspacing="0">
+        <thead>
+            <tr>
+                <th>ID</th><th>Order ID</th><th>Amount</th><th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="payment : ${paymentList}">
+                <td th:text="${payment.id}">1</td>
+                <td th:text="${payment.order.id}">20</td>
+                <td th:text="${payment.amount}">100.00</td>
+                <td>
+                    <a th:href="@{'/payments/edit/' + ${payment.id}}">Edit</a> |
+                    <a th:href="@{'/payments/delete/' + ${payment.id}}"
+                       onclick="return confirm('Delete this payment?');">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p><a href="/payments/new">Add New Payment</a></p>
+
+    <!-- Products Section -->
+    <h2>Products</h2>
+    <table border="1" cellpadding="5" cellspacing="0">
+        <thead>
+            <tr>
+                <th>ID</th><th>Name</th><th>Price</th><th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="product : ${productList}">
+                <td th:text="${product.id}">1</td>
+                <td th:text="${product.name}">Product A</td>
+                <td th:text="${product.price}">9.99</td>
+                <td>
+                    <a th:href="@{'/products/edit/' + ${product.id}}">Edit</a> |
+                    <a th:href="@{'/products/delete/' + ${product.id}}"
+                       onclick="return confirm('Delete this product?');">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p><a href="/products/new">Add New Product</a></p>
+
+</body>
+</html>

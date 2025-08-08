@@ -1,0 +1,18 @@
+package com.example.ecommerce_app.controller;
+
+
+//package com.example.first_spring_boot_app.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+@Controller
+public class AppController {
+	
+    @GetMapping("/home")
+    public String showHomePage() {
+        return "home"; // This will map to /templates/home.html
+    }
+}

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Order</title>
+    <meta charset="UTF-8" />
+</head>
+<body>
+    <h1>Add New Order</h1>
+    
+    <form th:action="@{/orders}" method="post">
+        <!-- No fields if your Order only has ID auto-generated -->
+        <button type="submit">Save Order</button>
+    </form>
+    
+    <a th:href="@{/orders}">Back to Orders List</a>
+</body>
+</html>

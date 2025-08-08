@@ -1,0 +1,37 @@
+package com.example.ecommerce_app.controller;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.ecommerce_app.model.Order;
+import com.example.ecommerce_app.service.OrderService;
+
+@RestController 
+@RequestMapping("/create-order") 
+public class OrderController { 
+@Autowired 
+private OrderService orderService; 
+@PostMapping
+public ResponseEntity<Order> createOrder(
+    @RequestParam Long customerId,
+    @RequestParam String productIds // comma-separated string
+) {
+    // Convert comma-separated string to List<Long>
+    List<Long> productIdList = Arrays.stream(productIds.split(","))
+                                     .map(String::trim)
+                                     .map(Long::valueOf)
+                                     .collect(Collectors.toList());
+    return ResponseEntity.status(HttpStatus.CREATED).body(orderService.createOrder(customerId, productIdList));
+}
+
+} 

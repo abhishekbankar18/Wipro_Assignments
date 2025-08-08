@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Order</title>
+</head>
+<body>
+
+<h2>Create Order</h2>
+
+<form action="/orders" method="post">
+    Customer ID: <input type="number" name="customerId" required><br><br>
+    Product IDs (comma-separated): <input type="text" name="productIds" required><br><br>
+    <input type="submit" value="Create Order">
+</form>
+
+</body>
+</html>

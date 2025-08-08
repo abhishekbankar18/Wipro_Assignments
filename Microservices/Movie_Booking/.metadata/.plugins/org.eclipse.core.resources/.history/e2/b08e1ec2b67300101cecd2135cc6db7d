@@ -1,0 +1,6 @@
+package com.example.booking_service.repository;
+
+@Repository
+public interface BookingRepository  extends JpaRepository<Booking, Long>{
+
+}

@@ -1,0 +1,49 @@
+package com.example.ecommerce_app.controller;
+
+import com.example.ecommerce_app.model.Product;
+import com.example.ecommerce_app.service.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@Controller
+public class ProductController {
+
+    @Autowired
+    private ProductService productService;
+
+    @GetMapping("/add-product")
+    public String showAddProductForm(Model model) {
+        model.addAttribute("product", new Product());
+        return "add-product";
+    }
+
+    @PostMapping("/save-product")
+    public String saveProduct(@ModelAttribute("product") Product product) {
+        productService.saveProduct(product);
+        return "redirect:/home";
+    }
+
+    // Optional edit/delete
+    @GetMapping("/edit-product/{id}")
+    public String showEditProductForm(@PathVariable Long id, Model model) {
+        Product product = productService.getProductById(id);
+        model.addAttribute("product", product);
+        return "edit-product";
+    }
+
+    @PostMapping("/update-product")
+    public String updateProduct(@ModelAttribute("product") Product product) {
+        productService.saveProduct(product); // Same save method works for update
+        return "redirect:/home";
+    }
+
+    @GetMapping("/delete-product/{id}")
+    public String deleteProduct(@PathVariable Long id) {
+        productService.deleteProduct(id);
+        return "redirect:/home";
+    }
+}

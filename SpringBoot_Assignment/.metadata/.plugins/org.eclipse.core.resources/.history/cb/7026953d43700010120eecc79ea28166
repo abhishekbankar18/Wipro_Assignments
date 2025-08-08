@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="casestudy1-ecommerceApp">
+        <property name="context-root" value="casestudy1-ecommerceApp"/>
+        <property name="java-output-path" value="/casestudy1-ecommerceApp/target/classes"/>
+    </wb-module>
+</project-modules>

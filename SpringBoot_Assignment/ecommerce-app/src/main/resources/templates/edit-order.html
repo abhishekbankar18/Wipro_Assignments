@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Order</title>
+</head>
+<body>
+<h1>Edit Order</h1>
+<form action="#" th:action="@{/update-order}" th:object="${order}" method="post">
+    <input type="hidden" th:field="*{id}"/>
+    
+    <label>Customer ID:</label>
+    <input type="number" th:field="*{customerId}" required/><br/><br/>
+    
+    <label>Product IDs (comma separated):</label>
+    <input type="text" th:field="*{productIds}" required/><br/><br/>
+    
+    <label>Order Date:</label>
+    <input type="text" th:value="${#dates.format(order.orderDate, 'yyyy-MM-dd HH:mm')}" disabled/><br/><br/>
+    
+    <button type="submit">Update Order</button>
+</form>
+<a href="/orders">Back to Orders</a>
+</body>
+</html>

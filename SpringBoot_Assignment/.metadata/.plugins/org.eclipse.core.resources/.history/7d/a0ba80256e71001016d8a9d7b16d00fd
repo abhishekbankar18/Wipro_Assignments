@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>E-Commerce Home</title>
+</head>
+<body>
+    <h1>Welcome to E-Commerce System</h1>
+
+    <!-- Customers -->
+    <h2>Customers</h2>
+    <a href="/add-customer">Add Customer</a>
+    <table border="1" cellpadding="5" cellspacing="0">
+        <thead>
+            <tr><th>ID</th><th>Name</th><th>Email</th><th>Actions</th></tr>
+        </thead>
+        <tbody>
+            <!-- Iterate customers -->
+            <tr th:each="cust : ${customerList}">
+                <td th:text="${cust.id}"></td>
+                <td th:text="${cust.name}"></td>
+                <td th:text="${cust.email}"></td>
+                <td>
+                    <a th:href="@{/edit/{id}(id=${cust.id})}">Edit</a> | 
+                    <a th:href="@{/delete/{id}(id=${cust.id})}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Products -->
+    <h2>Products</h2>
+    <a href="/add-product">Add Product</a>
+    <table border="1" cellpadding="5" cellspacing="0">
+        <thead>
+            <tr><th>ID</th><th>Name</th><th>Price</th></tr>
+        </thead>
+        <tbody>
+            <tr th:each="prod : ${productList}">
+                <td th:text="${prod.id}"></td>
+                <td th:text="${prod.name}"></td>
+                <td th:text="${prod.price}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Orders -->
+    <h2>Orders</h2>
+    <a href="/add-order">Create Order</a>
+    <table border="1" cellpadding="5" cellspacing="0">
+        <thead>
+            <tr><th>ID</th><th>Customer</th><th>Products</th><th>Order Date</th></tr>
+        </thead>
+        <tbody>
+            <tr th:each="order : ${orderList}">
+                <td th:text="${order.id}"></td>
+                <td th:text="${order.customer.name}"></td>
+                <td>
+                    <ul>
+                        <li th:each="prod : ${order.products}" th:text="${prod.name}"></li>
+                    </ul>
+                </td>
+                <td th:text="${#dates.format(order.orderDate, 'yyyy-MM-dd HH:mm')}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Payments -->
+    <h2>Payments</h2>
+    <a href="/add-payment">Make Payment</a>
+    <table border="1" cellpadding="5" cellspacing="0">
+        <thead>
+            <tr><th>ID</th><th>Order ID</th><th>Amount</th><th>Status</th><th>Payment Date</th></tr>
+        </thead>
+        <tbody>
+            <tr th:each="pay : ${paymentList}">
+                <td th:text="${pay.id}"></td>
+                <td th:text="${pay.order.id}"></td>
+                <td th:text="${pay.amount}"></td>
+                <td th:text="${pay.status}"></td>
+                <td th:text="${#dates.format(pay.paymentDate, 'yyyy-MM-dd HH:mm')}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

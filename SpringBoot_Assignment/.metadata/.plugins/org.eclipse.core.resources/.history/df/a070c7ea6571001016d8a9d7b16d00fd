@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer List</title>
+</head>
+<body>
+<h2>Customer List</h2>
+<a href="/add-customer">Add Customer</a><br><br>
+<table border="1">
+    <tr>
+        <th>ID</th><th>Name</th><th>Email</th><th>Actions</th>
+    </tr>
+    <tr th:each="customer : ${customerList}">
+        <td th:text="${customer.id}"></td>
+        <td th:text="${customer.name}"></td>
+        <td th:text="${customer.email}"></td>
+        <td>
+            <a th:href="@{/edit/{id}(id=${customer.id})}">Edit</a> |
+            <a th:href="@{/delete/{id}(id=${customer.id})}">Delete</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

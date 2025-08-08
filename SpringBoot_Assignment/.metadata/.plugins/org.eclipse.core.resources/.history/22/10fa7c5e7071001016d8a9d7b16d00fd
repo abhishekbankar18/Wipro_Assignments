@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Order</title>
+</head>
+<body>
+    <h1>Create Order</h1>
+    <form action="/orders" method="post">
+        <label>Customer ID:</label><br>
+        <input type="number" name="customerId" required><br><br>
+
+        <label>Product IDs (comma separated):</label><br>
+        <input type="text" name="productIds" placeholder="e.g. 1,2,3" required><br><br>
+
+        <button type="submit">Place Order</button>
+    </form>
+    <br>
+    <a href="/home">Back to Home</a>
+</body>
+</html>
