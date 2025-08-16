@@ -1,0 +1,9 @@
+package com.example.citizen_service.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.example.citizen_service.model.RequestStatus;
+
+public interface RequestStatusRepository extends JpaRepository<RequestStatus, Long> {
+	
+}

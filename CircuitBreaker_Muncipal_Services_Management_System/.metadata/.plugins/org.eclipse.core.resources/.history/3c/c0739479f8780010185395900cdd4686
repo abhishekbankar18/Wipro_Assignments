@@ -1,0 +1,58 @@
+package com.example.citizen_service.service;
+
+import org.springframework.stereotype.Service;
+
+import com.example.citizen_service.model.Citizen;
+import com.example.citizen_service.model.Request;
+import com.example.citizen_service.model.RequestStatus;
+import com.example.citizen_service.repository.CitizenRepository;
+import com.example.citizen_service.repository.RequestRepository;
+import com.example.citizen_service.repository.RequestStatusRepository;
+
+import java.util.List;
+
+@Service
+public class CitizenService {
+	
+    private CitizenRepository citizenRepository;
+    private RequestRepository requestRepository;
+    private RequestStatusRepository statusRepository;
+
+   
+    public Citizen createCitizen(Citizen citizen) {
+        return citizenRepository.save(citizen);
+    }
+
+    public List<Citizen> getAllCitizens() {
+        return citizenRepository.findAll();
+    }
+
+   
+    public Request createRequest(Long citizenId, String title, String description, Long departmentId) {
+        Citizen citizen = citizenRepository.findById(citizenId).orElseThrow();
+        RequestStatus status = statusRepository.findAll().stream()
+                .filter(s -> "New".equalsIgnoreCase(s.getStatusName()))
+                .findFirst()
+                .orElse(statusRepository.save(RequestStatus.builder().statusName("New").build()));
+
+        Request request = Request.builder()
+                .title(title)
+                .description(description)
+                .citizen(citizen)
+                .status(status)
+                .departmentId(departmentId)
+                .build();
+        return requestRepository.save(request);
+    }
+
+    public List<Request> getAllRequests() {
+        return requestRepository.findAll();
+    }
+
+    public Request updateRequestStatus(Long requestId, String statusName) {
+        Request req = requestRepository.findById(requestId).orElseThrow();
+        RequestStatus status = statusRepository.save(RequestStatus.builder().statusName(statusName).build());
+        req.setStatus(status);
+        return requestRepository.save(req);
+    }
+}

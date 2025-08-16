@@ -1,0 +1,12 @@
+package com.example.employee_service.Feign;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class DepartmentClientFallback implements DepartmentClient {
+    @Override
+    public Object getDepartmentById(Long id) {
+        System.out.println("Department Service is down! Returning fallback.");
+        return null;
+    }
+}

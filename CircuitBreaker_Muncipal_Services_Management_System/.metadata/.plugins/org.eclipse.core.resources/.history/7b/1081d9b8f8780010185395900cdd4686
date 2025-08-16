@@ -1,0 +1,44 @@
+package com.example.citizen_service.controller;
+
+import org.springframework.web.bind.annotation.*;
+
+import com.example.citizen_service.model.Citizen;
+import com.example.citizen_service.model.Request;
+import com.example.citizen_service.service.CitizenService;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/citizen-service")
+public class CitizenController {
+
+    private CitizenService citizenService;
+
+    @PostMapping("/citizens")
+    public Citizen createCitizen(@RequestBody Citizen citizen) {
+        return citizenService.createCitizen(citizen);
+    }
+
+    @GetMapping("/citizens")
+    public List<Citizen> getAllCitizens() {
+        return citizenService.getAllCitizens();
+    }
+
+    @PostMapping("/requests")
+    public Request createRequest(@RequestParam Long citizenId,
+                                 @RequestParam String title,
+                                 @RequestParam String description,
+                                 @RequestParam Long departmentId) {
+        return citizenService.createRequest(citizenId, title, description, departmentId);
+    }
+
+    @GetMapping("/requests")
+    public List<Request> getAllRequests() {
+        return citizenService.getAllRequests();
+    }
+
+    @PutMapping("/requests/{id}/status")
+    public Request updateStatus(@PathVariable Long id, @RequestParam String status) {
+        return citizenService.updateRequestStatus(id, status);
+    }
+}

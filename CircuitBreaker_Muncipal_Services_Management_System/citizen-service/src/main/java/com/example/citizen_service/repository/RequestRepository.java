@@ -1,0 +1,10 @@
+package com.example.citizen_service.repository;
+
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.example.citizen_service.model.Request;
+
+public interface RequestRepository extends JpaRepository<Request, Long> {
+	
+}

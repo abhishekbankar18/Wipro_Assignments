@@ -1,0 +1,5 @@
+package com.example.citizen_service.controller;
+
+public class CitizenController {
+
+}

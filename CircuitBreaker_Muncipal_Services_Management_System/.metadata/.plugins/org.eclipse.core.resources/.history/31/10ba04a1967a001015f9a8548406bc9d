@@ -1,0 +1,49 @@
+package com.example.employee_service.service;
+
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+
+import com.example.employee_service.Feign.DepartmentClient;
+import com.example.employee_service.dto.DepartmentDTO;
+import com.example.employee_service.model.Employee;
+import com.example.employee_service.repository.EmployeeRepository;
+
+@Service
+public class EmployeeService {
+
+    private final EmployeeRepository employeeRepository;
+    private final DepartmentClient departmentClient;
+
+    public EmployeeService(EmployeeRepository employeeRepository, DepartmentClient departmentClient) {
+        this.employeeRepository = employeeRepository;
+        this.departmentClient = departmentClient;
+    }
+
+    public Employee createEmployee(Employee employee, Long departmentId) {
+        try {
+            DepartmentDTO department = departmentClient.getDepartmentById(departmentId);
+
+            if (department == null) {
+                throw new RuntimeException("Department not found with id: " + departmentId);
+            }
+
+            employee.setDepartmentId(departmentId);
+            return employeeRepository.save(employee);
+
+        } catch (Exception e) {
+            throw new RuntimeException("Department Service is down or unreachable", e);
+        }
+    }
+
+    public List<Employee> getAllEmployees() {
+        return employeeRepository.findAll();
+    }
+
+    public Optional<Employee> getEmployeeById(Long id) {
+        return employeeRepository.findById(id);
+    }
+}
+
