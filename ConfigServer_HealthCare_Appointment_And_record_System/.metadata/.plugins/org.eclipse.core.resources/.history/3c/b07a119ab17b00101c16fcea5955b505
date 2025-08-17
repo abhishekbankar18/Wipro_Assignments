@@ -1,0 +1,36 @@
+package com.example.billing_service.controller;
+
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import com.example.billing_service.model.Billing;
+import com.example.billing_service.service.BillingService;
+
+@RestController
+@RequestMapping("/invoices")
+public class BillingController {
+    @Autowired
+    private BillingService service;
+
+    @PostMapping
+    public Billing createInvoice(@RequestBody Billing invoice) {
+        return service.createInvoice(invoice);
+    }
+
+    @GetMapping("/patient/{patientId}")
+    public List<Billing> getInvoices(@PathVariable Long patientId) {
+        return service.getInvoicesByPatient(patientId);
+    }
+
+    @GetMapping
+    public List<Billing> getAllInvoices() {
+        return service.getAllInvoices();
+    }
+
+    @PutMapping("/pay/{id}")
+    public String payInvoice(@PathVariable Long id) {
+        service.markAsPaid(id);
+        return "Invoice marked as PAID";
+    }
+}

@@ -1,0 +1,23 @@
+package com.example.medicalrecords_service.model;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+import java.time.LocalDate;
+
+@Entity
+public class MedicalRecord {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private Long patientId;
+    private LocalDate visitDate;
+    private String diagnosis;
+    private String prescription;
+    private String tests;
+
+    // Getters and Setters
+}
