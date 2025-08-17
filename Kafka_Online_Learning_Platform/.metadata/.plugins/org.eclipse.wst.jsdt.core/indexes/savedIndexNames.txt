@@ -1,0 +1,9 @@
+INDEX VERSION 1.4+C:\Users\Abhishek\Desktop\Wipro_Training\Day21_Kafka\MyProject\Kafka_Online_Learning_Platform\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+3659094804.index
+1612765338.index
+586937362.index
+1698827149.index
+4148515550.index
+2793823382.index
+1050042363.index
+103597224.index
