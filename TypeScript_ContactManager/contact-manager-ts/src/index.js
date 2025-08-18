@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var Personal_1 = require("./models/Personal");
+var Professional_1 = require("./models/Professional");
+var UserInfo_1 = require("./models/UserInfo");
+var user = new UserInfo_1.UserInfo('admin', 'admin@123', 'admin@example.com');
+var p1 = new Personal_1.Personal('Alice', 'Smith', '1234567890', 'New York', '2022-12-25', '2022-01-01', 'NYC', 'Friend', 'alice.jpg');
+var p2 = new Professional_1.Professional('Bob', 'Jones', '9876543210', 'Los Angeles', 'bob@company.com', 'Manager', 'Tech Corp', 'bob-card.png');
+user.addContact(p1);
+user.addContact(p2);
+console.log('All Contacts:', user.getAllContacts());
